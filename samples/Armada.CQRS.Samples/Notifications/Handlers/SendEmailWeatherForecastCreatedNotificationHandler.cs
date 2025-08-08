@@ -4,7 +4,7 @@ namespace Armada.CQRS.Samples.Notifications.Handlers
 {
   public class SendEmailWeatherForecastCreatedNotificationHandler(
     ILogger<SendEmailWeatherForecastCreatedNotificationHandler> logger) 
-    : INotificationRequestHandler<WeatherForecastCreatedNotification>
+    : INotificationHandler<WeatherForecastCreatedNotification>
   {
     public Task Handle(WeatherForecastCreatedNotification notification, CancellationToken cancellationToken = default)
     {

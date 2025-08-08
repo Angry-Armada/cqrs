@@ -17,16 +17,16 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddCommandDispatcher()
   .AddCommandHandlers()
-  .AddTransient(typeof(ICommandRequestMiddleware<>), typeof(LoggingCommandRequestMiddleware<>))
-  .AddTransient(typeof(ICommandRequestMiddleware<,>), typeof(LoggingCommandRequestMiddleware<,>));
+  .AddTransient(typeof(ICommandMiddleware<>), typeof(LoggingCommandMiddleware<>))
+  .AddTransient(typeof(ICommandMiddleware<,>), typeof(LoggingCommandMiddleware<,>));
 
 builder.Services.AddQueryDispatcher()
   .AddQueryHandlers()
-  .AddTransient(typeof(IQueryRequestMiddleware<,>), typeof(LoggingQueryRequestMiddleware<,>));
+  .AddTransient(typeof(IQueryMiddleware<,>), typeof(LoggingQueryMiddleware<,>));
 
 builder.Services.AddNotificationDispatcher()
   .AddNotificationHandlers()
-  .AddTransient(typeof(INotificationRequestMiddleware<>), typeof(LoggingNotificationMiddleware<>));
+  .AddTransient(typeof(INotificationMiddleware<>), typeof(LoggingNotificationMiddleware<>));
 
 builder.Services.AddSingleton<IForecastStore, ForecastStore>();
 

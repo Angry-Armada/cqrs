@@ -3,12 +3,12 @@ using Armada.CQRS.Queries.Middleware.Abstractions;
 
 namespace Armada.CQRS.Samples.Queries.Middleware
 {
-  public class LoggingQueryRequestMiddleware<TQuery, TResponse>(
-    ILogger<LoggingQueryRequestMiddleware<TQuery, TResponse>> logger) 
-    : IQueryRequestMiddleware<TQuery, TResponse> where TQuery : IQueryRequest<TResponse>
+  public class LoggingQueryMiddleware<TQuery, TResponse>(
+    ILogger<LoggingQueryMiddleware<TQuery, TResponse>> logger) 
+    : IQueryMiddleware<TQuery, TResponse> where TQuery : IQuery<TResponse>
   {
     public Task<TResponse> HandleAsync(TQuery query,
-      QueryRequestDelegate<TResponse> next, CancellationToken cancellationToken = default)
+      QueryDelegate<TResponse> next, CancellationToken cancellationToken = default)
     {
       logger.LogInformation("Query processing: {query}", typeof(TQuery).Name);
       

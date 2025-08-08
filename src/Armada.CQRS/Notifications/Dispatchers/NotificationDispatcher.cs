@@ -11,12 +11,12 @@ namespace Armada.CQRS.Notifications.Dispatchers
     private readonly ConcurrentDictionary<Type, IRequestHandlerWrapper> _requestHandlerWrappers = new();
 
     public Task PublishAsync<TNotification>(TNotification notification,
-      CancellationToken cancellationToken = default) where TNotification : INotificationRequest
+      CancellationToken cancellationToken = default) where TNotification : INotification
     {
-      var handlerWrapper = (INotificationRequestHandlerWrapper)_requestHandlerWrappers.GetOrAdd(notification.GetType(),
+      var handlerWrapper = (INotificationHandlerWrapper)_requestHandlerWrappers.GetOrAdd(notification.GetType(),
         static _ =>
         {
-          var wrapper = new NotificationRequestHandlerWrapper<TNotification>();
+          var wrapper = new NotificationHandlerWrapper<TNotification>();
           return wrapper;
         });
 

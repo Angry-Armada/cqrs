@@ -16,7 +16,7 @@ namespace Armada.CQRS.Queries.Extensions
     public static IServiceCollection AddQueryHandlers(this IServiceCollection serviceCollection)
     {
       serviceCollection.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
-        .AddClasses(c => c.AssignableTo(typeof(IQueryRequestHandler<,>)))
+        .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
         .UsingRegistrationStrategy(RegistrationStrategy.Skip)
         .AsImplementedInterfaces()
         .WithTransientLifetime());

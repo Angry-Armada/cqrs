@@ -3,5 +3,5 @@ using Armada.CQRS.Samples.DTOs;
 
 namespace Armada.CQRS.Samples.Commands
 {
-  public record CreateWeatherForecast(WeatherForecastCreateDto Payload) : ICommandRequest<Guid>;
+  public record CreateWeatherForecast(WeatherForecastCreateDto Payload) : ICommand<Guid>;
 }

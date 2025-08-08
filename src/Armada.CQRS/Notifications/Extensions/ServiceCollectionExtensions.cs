@@ -1,4 +1,3 @@
-using System;
 using Armada.CQRS.Notifications.Dispatchers;
 using Armada.CQRS.Notifications.Dispatchers.Abstractions;
 using Armada.CQRS.Notifications.Handlers.Abstractions;
@@ -17,7 +16,7 @@ namespace Armada.CQRS.Notifications.Extensions
     public static IServiceCollection AddNotificationHandlers(this IServiceCollection serviceCollection)
     {
       serviceCollection.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
-        .AddClasses(c => c.AssignableTo(typeof(INotificationRequestHandler<>)))
+        .AddClasses(c => c.AssignableTo(typeof(INotificationHandler<>)))
         .AsImplementedInterfaces()
         .WithTransientLifetime());
 

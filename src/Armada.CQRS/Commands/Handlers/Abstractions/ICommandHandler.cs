@@ -2,12 +2,12 @@ using Armada.CQRS.Commands.Contracts.Abstractions;
 
 namespace Armada.CQRS.Commands.Handlers.Abstractions;
 
-public interface ICommandRequestHandler<in TCommand> where TCommand : ICommandRequest
+public interface ICommandHandler<in TCommand> where TCommand : ICommand
 {
   Task Handle(TCommand command, CancellationToken cancellationToken = default);
 }
 
-public interface ICommandRequestHandler<in TCommand, TResponse> where TCommand : ICommandRequest<TResponse>
+public interface ICommandHandler<in TCommand, TResponse> where TCommand : ICommand<TResponse>
 {
   Task<TResponse> Handle(TCommand command, CancellationToken cancellationToken = default);
 }

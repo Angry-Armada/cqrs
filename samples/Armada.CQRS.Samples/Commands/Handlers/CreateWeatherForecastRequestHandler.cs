@@ -5,11 +5,11 @@ using Armada.CQRS.Samples.Notifications;
 
 namespace Armada.CQRS.Samples.Commands.Handlers
 {
-  public class CreateWeatherForecastRequestHandler(
-    ILogger<CreateWeatherForecastRequestHandler> logger,
+  public class CreateWeatherForecastHandler(
+    ILogger<CreateWeatherForecastHandler> logger,
     IForecastStore forecastStore,
     INotificationDispatcher notificationDispatcher) 
-    : ICommandRequestHandler<CreateWeatherForecast, Guid>
+    : ICommandHandler<CreateWeatherForecast, Guid>
   {
     public async Task<Guid> Handle(CreateWeatherForecast command, CancellationToken cancellationToken = default)
     {

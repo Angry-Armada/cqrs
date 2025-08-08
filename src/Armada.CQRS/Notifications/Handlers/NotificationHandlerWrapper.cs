@@ -4,22 +4,22 @@ using Armada.CQRS.Notifications.Middleware.Abstraction;
 
 namespace Armada.CQRS.Notifications.Handlers
 {
-  public class NotificationRequestHandlerWrapper<TNotification> : INotificationRequestHandlerWrapper
-    where TNotification : INotificationRequest
+  public class NotificationHandlerWrapper<TNotification> : INotificationHandlerWrapper
+    where TNotification : INotification
   {
-    public Task Handle(INotificationRequest notification,
+    public Task Handle(INotification notification,
       IServiceProvider serviceProvider, CancellationToken cancellationToken)
     {
-      var aggregation = serviceProvider.GetServices<INotificationRequestMiddleware<TNotification>>()
+      var aggregation = serviceProvider.GetServices<INotificationMiddleware<TNotification>>()
         .Reverse()
-        .Aggregate((NotificationRequestDelegate)HandlerDelegate,
+        .Aggregate((NotificationDelegate)HandlerDelegate,
           (next, middleware) => ct => middleware.HandleAsync((TNotification)notification, next, ct));
 
       return aggregation(cancellationToken);
       
       async Task HandlerDelegate(CancellationToken ct)
       {
-        var handlers = serviceProvider.GetServices<INotificationRequestHandler<TNotification>>();
+        var handlers = serviceProvider.GetServices<INotificationHandler<TNotification>>();
         foreach (var handler in handlers)
         {
           await handler.Handle((TNotification)notification, cancellationToken);

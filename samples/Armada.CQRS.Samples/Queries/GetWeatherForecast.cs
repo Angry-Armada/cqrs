@@ -3,5 +3,5 @@ using Armada.CQRS.Samples.Entities;
 
 namespace Armada.CQRS.Samples.Queries
 {
-  public record GetWeatherForecast : IQueryRequest<IEnumerable<WeatherForecast>>;
+  public record GetWeatherForecast : IQuery<IEnumerable<WeatherForecast>>;
 }

@@ -2,7 +2,7 @@ using Armada.CQRS.Notifications.Contracts.Abstractions;
 
 namespace Armada.CQRS.Notifications.Handlers.Abstractions
 {
-  public interface INotificationRequestHandler<in TNotification> where TNotification : INotificationRequest
+  public interface INotificationHandler<in TNotification> where TNotification : INotification
   {
     Task Handle(TNotification notification, CancellationToken cancellationToken = default);
   }
