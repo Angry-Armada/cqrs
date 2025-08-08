@@ -1,0 +1,20 @@
+### GET request to example server
+
+GET https://localhost:7089/WeatherForecast
+
+### POST request to example server
+
+POST https://localhost:7089/WeatherForecast
+Content-Type: application/json
+
+{
+  "date": "2025-01-01",
+  "temperatureC": 20,
+  "summary": "Freezing"
+}
+
+### PUT request to example server
+
+DELETE https://localhost:7089/WeatherForecast/{id}
+
+###
