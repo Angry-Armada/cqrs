@@ -22,7 +22,7 @@ namespace Armada.CQRS.Notifications.Handlers
         var handlers = serviceProvider.GetServices<INotificationHandler<TNotification>>();
         foreach (var handler in handlers)
         {
-          await handler.Handle((TNotification)notification, cancellationToken);
+          await handler.Handle((TNotification)notification, ct);
         }
       }
     }
