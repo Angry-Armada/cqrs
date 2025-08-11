@@ -2,7 +2,7 @@ using Armada.CQRS.Notifications.Handlers.Abstractions;
 
 namespace Armada.CQRS.Samples.Features.WeatherForecast.Notifications;
 
-public class SendSmsWeatherForecastCreatedNotificationHandler(
+public class WeatherForecastCreatedSendSmsNotificationHandler(
   ILogger<WeatherForecastCreatedNotification> logger) 
   : INotificationHandler<WeatherForecastCreatedNotification>
 {

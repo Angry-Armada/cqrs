@@ -1,3 +1,5 @@
+using Armada.CQRS.Commands.Handlers.Abstractions;
+
 namespace Armada.CQRS.Samples.Features.WeatherForecast.Commands;
 
 public class DeleteWeatherForecastHandler(

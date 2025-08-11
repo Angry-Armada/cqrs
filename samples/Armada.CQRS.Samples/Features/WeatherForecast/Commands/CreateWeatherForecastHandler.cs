@@ -1,18 +1,16 @@
+using Armada.CQRS.Commands.Handlers.Abstractions;
 using Armada.CQRS.Notifications.Dispatchers.Abstractions;
 using Armada.CQRS.Samples.Features.WeatherForecast.Notifications;
 
 namespace Armada.CQRS.Samples.Features.WeatherForecast.Commands;
 
 public class CreateWeatherForecastHandler(
-  ILogger<CreateWeatherForecastHandler> logger,
   IForecastStore forecastStore,
   INotificationDispatcher notificationDispatcher) 
   : ICommandHandler<CreateWeatherForecast, Guid>
 {
   public async Task<Guid> Handle(CreateWeatherForecast command, CancellationToken cancellationToken = default)
   {
-    logger.LogInformation("Creating Weather Forecast");
-
     var forecast = new Entities.WeatherForecast
     {
       Id = Guid.NewGuid(),

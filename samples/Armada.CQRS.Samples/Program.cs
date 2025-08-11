@@ -1,3 +1,4 @@
+using System.Reflection;
 using Armada.CQRS.Commands.Extensions;
 using Armada.CQRS.Commands.Middleware.Abstractions;
 using Armada.CQRS.FluentValidation.Queries.Extensions;
@@ -9,6 +10,7 @@ using Armada.CQRS.Samples;
 using Armada.CQRS.Samples.Features.WeatherForecast.Commands.Middleware;
 using Armada.CQRS.Samples.Features.WeatherForecast.Notifications.Middleware;
 using Armada.CQRS.Samples.Features.WeatherForecast.Queries.Middleware;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,18 +18,20 @@ builder.Services.AddControllers();
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), ServiceLifetime.Transient);
+
 builder.Services.AddCommandDispatcher()
   .AddCommandHandlers()
-  .AddTransient(typeof(ICommandMiddleware<,>), typeof(LoggingCommandMiddleware<,>));
+  .AddTransient(typeof(ICommandMiddleware<,>), typeof(WeatherForecastCommandLoggingMiddleware<,>));
 
 builder.Services.AddQueryDispatcher()
   .AddQueryHandlers()
   .AddQueryFluentValidation()
-  .AddTransient(typeof(IQueryMiddleware<,>), typeof(LoggingQueryMiddleware<,>));
+  .AddTransient(typeof(IQueryMiddleware<,>), typeof(WeatherForecastQueryLoggingMiddleware<,>));
 
 builder.Services.AddNotificationDispatcher()
   .AddNotificationHandlers()
-  .AddTransient(typeof(INotificationMiddleware<>), typeof(LoggingNotificationMiddleware<>));
+  .AddTransient(typeof(INotificationMiddleware<>), typeof(WeatherForecastNotificationLoggingMiddleware<>));
 
 builder.Services.AddSingleton<IForecastStore, ForecastStore>();
 

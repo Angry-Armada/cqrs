@@ -3,14 +3,14 @@ using Armada.CQRS.Queries.Middleware.Abstractions;
 
 namespace Armada.CQRS.Samples.Features.WeatherForecast.Queries.Middleware;
 
-public class LoggingQueryMiddleware<TQuery, TResponse>(
-  ILogger<LoggingQueryMiddleware<TQuery, TResponse>> logger) 
+public class WeatherForecastQueryLoggingMiddleware<TQuery, TResponse>(
+  ILogger<WeatherForecastQueryLoggingMiddleware<TQuery, TResponse>> logger) 
   : IQueryMiddleware<TQuery, TResponse> where TQuery : IQuery<TResponse>
 {
   public Task<TResponse> HandleAsync(TQuery query,
     QueryDelegate<TResponse> next, CancellationToken cancellationToken = default)
   {
-    logger.LogInformation("Query processing: {query}", typeof(TQuery).Name);
+    logger.LogInformation("Weather Forecast Query Processing: {query}", typeof(TQuery).Name);
       
     return next(cancellationToken);
   }
