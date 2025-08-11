@@ -1,7 +1,7 @@
 using System.Reflection;
 using Armada.CQRS.Commands.Extensions;
 using Armada.CQRS.Commands.Middleware.Abstractions;
-using Armada.CQRS.FluentValidation.Queries.Extensions;
+using Armada.CQRS.Extensions.FluentValidation.Queries.Extensions;
 using Armada.CQRS.Notifications.Extensions;
 using Armada.CQRS.Notifications.Middleware.Abstraction;
 using Armada.CQRS.Queries.Extensions;

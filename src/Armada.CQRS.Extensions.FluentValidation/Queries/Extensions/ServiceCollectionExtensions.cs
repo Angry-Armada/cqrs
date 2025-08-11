@@ -1,8 +1,8 @@
-using Armada.CQRS.FluentValidation.Queries.Middleware;
+using Armada.CQRS.Extensions.FluentValidation.Queries.Middleware;
 using Armada.CQRS.Queries.Middleware.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Armada.CQRS.FluentValidation.Queries.Extensions;
+namespace Armada.CQRS.Extensions.FluentValidation.Queries.Extensions;
 
 public static class ServiceCollectionExtensions
 {

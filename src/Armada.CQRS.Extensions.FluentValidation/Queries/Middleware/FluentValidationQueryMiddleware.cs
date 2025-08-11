@@ -2,7 +2,7 @@ using Armada.CQRS.Queries.Contracts.Abstractions;
 using Armada.CQRS.Queries.Middleware.Abstractions;
 using FluentValidation;
 
-namespace Armada.CQRS.FluentValidation.Queries.Middleware;
+namespace Armada.CQRS.Extensions.FluentValidation.Queries.Middleware;
 
 public class FluentValidationQueryMiddleware<TQuery, TResponse>(
     IEnumerable<IValidator<TQuery>> validators)

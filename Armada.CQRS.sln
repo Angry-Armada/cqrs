@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{97C2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armada.CQRS.Samples", "samples\Armada.CQRS.Samples\Armada.CQRS.Samples.csproj", "{F9315DE3-5393-46F1-93EA-A420C0A6434D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armada.CQRS.FluentValidation", "src\Armada.CQRS.FluentValidation\Armada.CQRS.FluentValidation.csproj", "{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armada.CQRS.Extensions.FluentValidation", "src\Armada.CQRS.Extensions.FluentValidation\Armada.CQRS.Extensions.FluentValidation.csproj", "{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
