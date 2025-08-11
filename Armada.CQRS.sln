@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{97C2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armada.CQRS.Samples", "samples\Armada.CQRS.Samples\Armada.CQRS.Samples.csproj", "{F9315DE3-5393-46F1-93EA-A420C0A6434D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armada.CQRS.FluentValidation", "src\Armada.CQRS.FluentValidation\Armada.CQRS.FluentValidation.csproj", "{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B441D03B-0071-4075-9A04-9B48E6534C57} = {263CF3B9-7016-4A42-999E-60949F0E27D9}
 		{F9315DE3-5393-46F1-93EA-A420C0A6434D} = {97C2AD60-2E13-4499-B9C8-A3762195C075}
+		{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF} = {263CF3B9-7016-4A42-999E-60949F0E27D9}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B441D03B-0071-4075-9A04-9B48E6534C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,5 +29,9 @@ Global
 		{F9315DE3-5393-46F1-93EA-A420C0A6434D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9315DE3-5393-46F1-93EA-A420C0A6434D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9315DE3-5393-46F1-93EA-A420C0A6434D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F4AE93-1E97-48A3-AE74-30BA47EB0ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

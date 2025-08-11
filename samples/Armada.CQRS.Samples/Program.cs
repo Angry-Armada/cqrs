@@ -1,5 +1,6 @@
 using Armada.CQRS.Commands.Extensions;
 using Armada.CQRS.Commands.Middleware.Abstractions;
+using Armada.CQRS.FluentValidation.Queries.Extensions;
 using Armada.CQRS.Notifications.Extensions;
 using Armada.CQRS.Notifications.Middleware.Abstraction;
 using Armada.CQRS.Queries.Extensions;
@@ -22,6 +23,7 @@ builder.Services.AddCommandDispatcher()
 
 builder.Services.AddQueryDispatcher()
   .AddQueryHandlers()
+  .AddQueryFluentValidation()
   .AddTransient(typeof(IQueryMiddleware<,>), typeof(LoggingQueryMiddleware<,>));
 
 builder.Services.AddNotificationDispatcher()

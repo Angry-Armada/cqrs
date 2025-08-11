@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Armada.CQRS.FluentValidation\Armada.CQRS.FluentValidation.csproj" />
     <ProjectReference Include="..\..\src\Armada.CQRS\Armada.CQRS.csproj" />
   </ItemGroup>
 
