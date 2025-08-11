@@ -1,4 +1,3 @@
-namespace Armada.CQRS.Handlers.Abstractions
-{
-    public interface IRequestHandlerWrapper;
-}
+namespace Armada.CQRS.Handlers.Abstractions;
+
+public interface IRequestHandlerWrapper;

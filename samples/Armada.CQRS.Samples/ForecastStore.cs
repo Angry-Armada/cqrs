@@ -1,32 +1,31 @@
 using System.Collections.Concurrent;
 using Armada.CQRS.Samples.Features.WeatherForecast.Entities;
 
-namespace Armada.CQRS.Samples
+namespace Armada.CQRS.Samples;
+
+public interface IForecastStore
 {
-  public interface IForecastStore
-  {
-    void Add(Guid id, WeatherForecast forecast);
-    void Delete(Guid id);
-    ICollection<WeatherForecast> GetAll();
-  }
+  void Add(Guid id, WeatherForecast forecast);
+  void Delete(Guid id);
+  ICollection<WeatherForecast> GetAll();
+}
   
-  public class ForecastStore : IForecastStore
-  {
-    private readonly ConcurrentDictionary<Guid, WeatherForecast> _dictionary = new();
+public class ForecastStore : IForecastStore
+{
+  private readonly ConcurrentDictionary<Guid, WeatherForecast> _dictionary = new();
     
-    public void Add(Guid id, WeatherForecast forecast)
-    {
-      _dictionary.TryAdd(id, forecast);
-    }
+  public void Add(Guid id, WeatherForecast forecast)
+  {
+    _dictionary.TryAdd(id, forecast);
+  }
 
-    public void Delete(Guid id)
-    {
-      _dictionary.TryRemove(id, out _);
-    }
+  public void Delete(Guid id)
+  {
+    _dictionary.TryRemove(id, out _);
+  }
 
-    public ICollection<WeatherForecast> GetAll()
-    {
-      return _dictionary.Values;
-    }
+  public ICollection<WeatherForecast> GetAll()
+  {
+    return _dictionary.Values;
   }
 }
