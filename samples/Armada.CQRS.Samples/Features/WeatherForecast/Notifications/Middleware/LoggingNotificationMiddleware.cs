@@ -1,7 +1,7 @@
 using Armada.CQRS.Notifications.Contracts.Abstractions;
 using Armada.CQRS.Notifications.Middleware.Abstraction;
 
-namespace Armada.CQRS.Samples.Notifications.Middleware
+namespace Armada.CQRS.Samples.Features.WeatherForecast.Notifications.Middleware
 {
   public class LoggingNotificationMiddleware<TNotification>(
     ILogger<LoggingNotificationMiddleware<TNotification>> logger) 

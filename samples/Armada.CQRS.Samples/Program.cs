@@ -6,9 +6,9 @@ using Armada.CQRS.Notifications.Middleware.Abstraction;
 using Armada.CQRS.Queries.Extensions;
 using Armada.CQRS.Queries.Middleware.Abstractions;
 using Armada.CQRS.Samples;
-using Armada.CQRS.Samples.Commands.Middleware;
-using Armada.CQRS.Samples.Notifications.Middleware;
-using Armada.CQRS.Samples.Queries.Middleware;
+using Armada.CQRS.Samples.Features.WeatherForecast.Commands.Middleware;
+using Armada.CQRS.Samples.Features.WeatherForecast.Notifications.Middleware;
+using Armada.CQRS.Samples.Features.WeatherForecast.Queries.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +18,6 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddCommandDispatcher()
   .AddCommandHandlers()
-  .AddTransient(typeof(ICommandMiddleware<>), typeof(LoggingCommandMiddleware<>))
   .AddTransient(typeof(ICommandMiddleware<,>), typeof(LoggingCommandMiddleware<,>));
 
 builder.Services.AddQueryDispatcher()

@@ -16,13 +16,6 @@ public static class ServiceCollectionExtensions
   public static IServiceCollection AddCommandHandlers(this IServiceCollection serviceCollection)
   {
     serviceCollection.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
-      .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
-      .UsingRegistrationStrategy(RegistrationStrategy.Skip)
-      .AsImplementedInterfaces()
-      .WithTransientLifetime());
-
-    
-    serviceCollection.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
       .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<,>)))
       .UsingRegistrationStrategy(RegistrationStrategy.Skip)
       .AsImplementedInterfaces()

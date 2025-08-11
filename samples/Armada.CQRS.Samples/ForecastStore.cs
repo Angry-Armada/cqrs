@@ -1,5 +1,5 @@
 using System.Collections.Concurrent;
-using Armada.CQRS.Samples.Entities;
+using Armada.CQRS.Samples.Features.WeatherForecast.Entities;
 
 namespace Armada.CQRS.Samples
 {

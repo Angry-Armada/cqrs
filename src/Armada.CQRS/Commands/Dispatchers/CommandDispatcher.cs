@@ -10,19 +10,6 @@ public class CommandDispatcher(IServiceProvider serviceProvider) : ICommandDispa
 {
   private readonly ConcurrentDictionary<Type, IRequestHandlerWrapper> _requestHandlerWrappers = new();
 
-  public Task SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default)
-    where TCommand : ICommand
-  {
-    var handlerWrapper = (ICommandHandlerWrapper)_requestHandlerWrappers.GetOrAdd(command.GetType(),
-      static _ =>
-      {
-        var wrapper = new CommandHandlerWrapper<TCommand>();
-        return wrapper;
-      });
-
-    return handlerWrapper.Handle(command, serviceProvider, cancellationToken);
-  }
-
   public Task<TResponse> SendAsync<TResponse>(ICommand<TResponse> command,
     CancellationToken cancellationToken = default)
   {

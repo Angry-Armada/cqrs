@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentResults" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
@@ -17,6 +18,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Armada.CQRS.FluentValidation\Armada.CQRS.FluentValidation.csproj" />
     <ProjectReference Include="..\..\src\Armada.CQRS\Armada.CQRS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\WeatherForecast\" />
   </ItemGroup>
 
 </Project>

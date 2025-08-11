@@ -1,9 +1,9 @@
 using Armada.CQRS.Commands.Dispatchers.Abstractions;
 using Armada.CQRS.Queries.Dispatchers.Abstractions;
-using Armada.CQRS.Samples.Commands;
-using Armada.CQRS.Samples.DTOs;
-using Armada.CQRS.Samples.Entities;
-using Armada.CQRS.Samples.Queries;
+using Armada.CQRS.Samples.Features.WeatherForecast.Commands;
+using Armada.CQRS.Samples.Features.WeatherForecast.DTOs;
+using Armada.CQRS.Samples.Features.WeatherForecast.Entities;
+using Armada.CQRS.Samples.Features.WeatherForecast.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Armada.CQRS.Samples.Controllers
