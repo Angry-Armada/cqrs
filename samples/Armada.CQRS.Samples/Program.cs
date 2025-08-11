@@ -1,6 +1,7 @@
 using System.Reflection;
 using Armada.CQRS.Commands.Extensions;
 using Armada.CQRS.Commands.Middleware.Abstractions;
+using Armada.CQRS.Extensions.FluentValidation.Commands.Extensions;
 using Armada.CQRS.Extensions.FluentValidation.Queries.Extensions;
 using Armada.CQRS.Notifications.Extensions;
 using Armada.CQRS.Notifications.Middleware.Abstraction;
@@ -10,7 +11,6 @@ using Armada.CQRS.Samples;
 using Armada.CQRS.Samples.Features.WeatherForecast.Commands.Middleware;
 using Armada.CQRS.Samples.Features.WeatherForecast.Notifications.Middleware;
 using Armada.CQRS.Samples.Features.WeatherForecast.Queries.Middleware;
-using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +22,7 @@ builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), Serv
 
 builder.Services.AddCommandDispatcher()
   .AddCommandHandlers()
+  .AddCommandFluentValidation()
   .AddTransient(typeof(ICommandMiddleware<,>), typeof(WeatherForecastCommandLoggingMiddleware<,>));
 
 builder.Services.AddQueryDispatcher()

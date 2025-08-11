@@ -1,17 +1,17 @@
-using Armada.CQRS.Queries.Contracts.Abstractions;
-using Armada.CQRS.Queries.Middleware.Abstractions;
+using Armada.CQRS.Commands.Contracts.Abstractions;
+using Armada.CQRS.Commands.Middleware.Abstractions;
 
-namespace Armada.CQRS.Extensions.FluentValidation.Queries.Middleware;
+namespace Armada.CQRS.Extensions.FluentValidation.Commands.Middleware;
 
-public class FluentValidationQueryMiddleware<TQuery, TResponse>(
-    IEnumerable<IValidator<TQuery>> validators)
-    : IQueryMiddleware<TQuery, TResponse>
-    where TQuery : IQuery<TResponse>
+public class FluentValidationCommandMiddleware<TCommand, TResponse>(
+    IEnumerable<IValidator<TCommand>> validators)
+    : ICommandMiddleware<TCommand, TResponse>
+    where TCommand : ICommand<TResponse>
 {
-    public async Task<TResponse> HandleAsync(TQuery query, QueryDelegate<TResponse> next,
+    public async Task<TResponse> HandleAsync(TCommand command, CommandDelegate<TResponse> next,
         CancellationToken cancellationToken = default)
     {
-        var context = new ValidationContext<TQuery>(query);
+        var context = new ValidationContext<TCommand>(command);
         var validationTasks = validators.Select(v => v.ValidateAsync(context, cancellationToken));
         var validationResults = await Task.WhenAll(validationTasks);
 

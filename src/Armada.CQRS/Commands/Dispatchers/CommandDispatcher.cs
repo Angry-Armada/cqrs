@@ -8,12 +8,12 @@ namespace Armada.CQRS.Commands.Dispatchers;
 
 public class CommandDispatcher(IServiceProvider serviceProvider) : ICommandDispatcher
 {
-  private readonly ConcurrentDictionary<Type, IRequestHandlerWrapper> _requestHandlerWrappers = new();
+  private static readonly ConcurrentDictionary<Type, IRequestHandlerWrapper> RequestHandlerWrappers = new();
 
   public Task<TResponse> SendAsync<TResponse>(ICommand<TResponse> command,
     CancellationToken cancellationToken = default)
   {
-    var handlerWrapper = (ICommandHandlerWrapper<TResponse>)_requestHandlerWrappers.GetOrAdd(command.GetType(),
+    var handlerWrapper = (ICommandHandlerWrapper<TResponse>)RequestHandlerWrappers.GetOrAdd(command.GetType(),
       static commandType =>
       {
         var wrapperType = typeof(CommandHandlerWrapper<,>).MakeGenericType(commandType, typeof(TResponse));

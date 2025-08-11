@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
 {
   public static IServiceCollection AddCommandDispatcher(this IServiceCollection serviceCollection)
   {
-    serviceCollection.AddSingleton<ICommandDispatcher, CommandDispatcher>();
+    serviceCollection.AddTransient<ICommandDispatcher, CommandDispatcher>();
       
     return serviceCollection;
   }

@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace Armada.CQRS.Samples.Features.WeatherForecast.Queries.Validators;
 
 public class GetWeatherForecastValidator : AbstractValidator<GetWeatherForecast>
