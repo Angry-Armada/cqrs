@@ -1,6 +1,8 @@
+using Armada.CQRS.Notifications.Contracts.Abstractions;
 using Armada.CQRS.Notifications.Dispatchers;
 using Armada.CQRS.Notifications.Dispatchers.Abstractions;
 using Armada.CQRS.Notifications.Handlers.Abstractions;
+using Armada.CQRS.Notifications.Middleware.Abstraction;
 
 namespace Armada.CQRS.Notifications.Extensions;
 
@@ -21,5 +23,20 @@ public static class ServiceCollectionExtensions
       .WithTransientLifetime());
 
     return serviceCollection;
+  }
+  
+  public static IServiceCollection AddGlobalNotificationMiddleware(
+    this IServiceCollection services, Type middleware)
+  {
+    services.AddTransient(typeof(INotificationMiddleware<>), middleware);
+    return services;
+  }
+    
+  public static IServiceCollection AddSpecificNotificationMiddleware<TNotificationMiddleware, TNotification>(
+    this IServiceCollection services) where TNotificationMiddleware : INotificationMiddleware<TNotification>
+    where TNotification : INotification
+  {
+    services.AddTransient(typeof(INotificationMiddleware<TNotification>), typeof(TNotificationMiddleware));
+    return services;
   }
 }

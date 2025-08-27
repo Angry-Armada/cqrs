@@ -1,5 +1,5 @@
 using Armada.CQRS.Extensions.FluentValidation.Notifications.Middleware;
-using Armada.CQRS.Notifications.Middleware.Abstraction;
+using Armada.CQRS.Notifications.Extensions;
 
 namespace Armada.CQRS.Extensions.FluentValidation.Notifications.Extensions;
 
@@ -7,8 +7,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddNotificationFluentValidation(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient(typeof(INotificationMiddleware<>),
-            typeof(FluentValidationNotificationMiddleware<>));
+        serviceCollection.AddGlobalNotificationMiddleware(typeof(FluentValidationNotificationMiddleware<>));
 
         return serviceCollection;
     }
