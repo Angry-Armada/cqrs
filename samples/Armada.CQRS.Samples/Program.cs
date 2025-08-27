@@ -1,6 +1,5 @@
 using System.Reflection;
 using Armada.CQRS.Commands.Extensions;
-using Armada.CQRS.Commands.Middleware.Abstractions;
 using Armada.CQRS.Extensions.FluentValidation.Commands.Extensions;
 using Armada.CQRS.Extensions.FluentValidation.Queries.Extensions;
 using Armada.CQRS.Notifications.Extensions;
@@ -8,6 +7,8 @@ using Armada.CQRS.Notifications.Middleware.Abstraction;
 using Armada.CQRS.Queries.Extensions;
 using Armada.CQRS.Queries.Middleware.Abstractions;
 using Armada.CQRS.Samples;
+using Armada.CQRS.Samples.Commands.Middleware;
+using Armada.CQRS.Samples.Features.WeatherForecast.Commands;
 using Armada.CQRS.Samples.Features.WeatherForecast.Commands.Middleware;
 using Armada.CQRS.Samples.Features.WeatherForecast.Notifications.Middleware;
 using Armada.CQRS.Samples.Features.WeatherForecast.Queries.Middleware;
@@ -22,8 +23,9 @@ builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), Serv
 
 builder.Services.AddCommandDispatcher()
   .AddCommandHandlers()
-  .AddCommandFluentValidation()
-  .AddTransient(typeof(ICommandMiddleware<,>), typeof(WeatherForecastCommandLoggingMiddleware<,>));
+  .AddGlobalCommandMiddleware(typeof(GlobalCommandLoggingMiddleware<,>))
+  .AddSpecificCommandMiddleware<WeatherForecastCreateCommandLoggingMiddleware, CreateWeatherForecast, Guid>()
+  .AddCommandFluentValidation();
 
 builder.Services.AddQueryDispatcher()
   .AddQueryHandlers()
@@ -38,7 +40,6 @@ builder.Services.AddSingleton<IForecastStore, ForecastStore>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
   app.MapOpenApi();

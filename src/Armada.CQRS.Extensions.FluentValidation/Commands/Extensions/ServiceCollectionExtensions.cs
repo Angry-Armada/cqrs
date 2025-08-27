@@ -1,4 +1,4 @@
-using Armada.CQRS.Commands.Middleware.Abstractions;
+using Armada.CQRS.Commands.Extensions;
 using Armada.CQRS.Extensions.FluentValidation.Commands.Middleware;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddCommandFluentValidation(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient(typeof(ICommandMiddleware<,>), typeof(FluentValidationCommandMiddleware<,>));
+        serviceCollection.AddGlobalCommandMiddleware(typeof(FluentValidationCommandMiddleware<,>));
         
         return serviceCollection;
     }
