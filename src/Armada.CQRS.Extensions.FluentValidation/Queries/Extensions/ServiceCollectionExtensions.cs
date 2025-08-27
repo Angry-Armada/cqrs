@@ -1,6 +1,5 @@
 using Armada.CQRS.Extensions.FluentValidation.Queries.Middleware;
-using Armada.CQRS.Queries.Middleware.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
+using Armada.CQRS.Queries.Extensions;
 
 namespace Armada.CQRS.Extensions.FluentValidation.Queries.Extensions;
 
@@ -8,7 +7,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddQueryFluentValidation(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient(typeof(IQueryMiddleware<,>), typeof(FluentValidationQueryMiddleware<,>));
+        serviceCollection.AddGlobalQueryMiddleware(typeof(FluentValidationQueryMiddleware<,>));
         
         return serviceCollection;
     }

@@ -1,6 +1,5 @@
 using Armada.CQRS.Commands.Extensions;
 using Armada.CQRS.Extensions.FluentValidation.Commands.Middleware;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Armada.CQRS.Extensions.FluentValidation.Commands.Extensions;
 

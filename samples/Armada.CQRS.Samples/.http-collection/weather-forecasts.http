@@ -8,7 +8,7 @@ POST https://localhost:7089/WeatherForecast
 Content-Type: application/json
 
 {
-  "date": "2025-01-01",
+  "date": "4231-01-01",
   "temperatureC": 20,
   "summary": "Freezing"
 }

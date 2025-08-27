@@ -3,8 +3,8 @@ using Armada.CQRS.Commands.Middleware.Abstractions;
 
 namespace Armada.CQRS.Samples.Features.WeatherForecast.Commands.Middleware;
 
-public class WeatherForecastCreateCommandLoggingMiddleware(
-    ILogger<WeatherForecastCreateCommandLoggingMiddleware> logger)
+public class CreateWeatherForecastLoggingMiddleware(
+    ILogger<CreateWeatherForecastLoggingMiddleware> logger)
     : ICommandMiddleware<CreateWeatherForecast, Guid>
 {
     public Task<Guid> HandleAsync(CreateWeatherForecast command,
