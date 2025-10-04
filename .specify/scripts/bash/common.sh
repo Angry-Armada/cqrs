@@ -72,10 +72,18 @@ check_feature_branch() {
         return 0
     fi
     
-    if [[ ! "$branch" =~ ^[0-9]{3}- ]]; then
-        echo "ERROR: Not on a feature branch. Current branch: $branch" >&2
-        echo "Feature branches should be named like: 001-feature-name" >&2
+    # Check if we're on main/master branch (not allowed)
+    if [[ "$branch" =~ ^(main|master)$ ]]; then
+        echo "ERROR: Cannot run specify on main/master branch. Current branch: $branch" >&2
+        echo "Please create and checkout a feature branch first (e.g., 'feature/new-functionality' or '001-feature-name')" >&2
         return 1
+    fi
+    
+    # Accept both numbered branches (001-feature-name) and feature branches (feature/feature-name)
+    if [[ ! "$branch" =~ ^([0-9]{3}-|feature/) ]]; then
+        echo "WARNING: Branch name '$branch' doesn't follow recommended conventions" >&2
+        echo "Recommended formats: 'NNN-feature-name' or 'feature/feature-name'" >&2
+        echo "Continuing anyway..." >&2
     fi
     
     return 0
