@@ -1,6 +1,19 @@
 # Tasks: [FEATURE NAME]
 
-**Input**: Design documents from `/specs/[###-feature-name]/`
+**Input**: Design documents fro## Phase 3.3: Core Implementation
+- [ ] T008 Create WeatherForecast command in src/commands/CreateWeatherForecast.cs
+- [ ] T009 Create WeatherForecast handler in src/handlers/CreateWeatherForecastHandler.cs  
+- [ ] T010 [P] Create GetWeatherForecast query in src/queries/GetWeatherForecast.cs
+- [ ] T011 [P] Query handler in src/handlers/GetWeatherForecastHandler.cs
+- [ ] T012 Command dispatcher registration
+- [ ] T013 Query dispatcher registration
+- [ ] T014 Input validation and error handling
+
+## Phase 3.4: Integration
+- [ ] T015 Command middleware pipeline setup
+- [ ] T016 Query middleware pipeline setup
+- [ ] T017 Logging middleware for commands/queries
+- [ ] T018 Validation middleware integration-feature-name]/`
 **Prerequisites**: plan.md (required), research.md, data-model.md, contracts/
 
 ## Execution Flow (main)
@@ -14,9 +27,9 @@
    → research.md: Extract decisions → setup tasks
 3. Generate tasks by category:
    → Setup: project init, dependencies, linting
-   → Tests: contract tests, integration tests
-   → Core: models, services, CLI commands
-   → Integration: DB, middleware, logging
+   → Tests: contract tests, integration tests, specification tests
+   → Core: commands, queries, handlers, dispatchers
+   → Integration: middleware pipelines, DI registration, logging
    → Polish: unit tests, performance, docs
 4. Apply task rules:
    → Different files = mark [P] for parallel

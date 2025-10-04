@@ -1,13 +1,14 @@
 <!-- 
-Sync Impact Report - Constitution v1.0.0
-Version change: Initial → 1.0.0
-Modified principles: All principles established for first time
-Added sections: Core Principles, Architecture Constraints, Quality Standards, Governance
-Removed sections: None (initial version)
+Sync Impact Report - Constitution v1.0.1
+Version change: 1.0.0 → 1.0.1 (PATCH - Template consistency updates)
+Modified principles: None (constitution already complete)
+Added sections: None
+Removed sections: None
 Templates requiring updates: 
-✅ Updated plan-template.md references
-✅ Updated spec-template.md scope alignment  
-✅ Updated tasks-template.md task categorization
+✅ Updated plan-template.md - Added specific constitutional gates
+✅ Updated tasks-template.md - Added CQRS-specific task categories
+✅ Validated spec-template.md - Already aligned with testing requirements
+✅ Validated agent-file-template.md - Generic template, no updates needed
 Follow-up TODOs: None
 -->
 
@@ -84,4 +85,4 @@ This constitution supersedes all other development practices and architectural d
 
 Amendment procedure: Proposed changes documented in GitHub issue, community discussion period, maintainer approval, version increment, migration guide provided.
 
-**Version**: 1.0.0 | **Ratified**: 2025-10-05 | **Last Amended**: 2025-10-05
+**Version**: 1.0.1 | **Ratified**: 2025-10-05 | **Last Amended**: 2025-10-05
